@@ -1,18 +1,377 @@
----
-layout: default
----
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Tronix</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        html,body{
+            height: 100%;
+            width: 100%;
+            min-width: 1200px;
+        }
+        ul{
+            list-style: none;
+        }
+        .clearfix:after {
+            content: ".";
+            display: block;
+            height: 0;
+            clear: both;
+            visibility: hidden
+        }
 
-<div class="posts">
-  {% for post in site.posts %}
-    <article class="post">
+        .banner{
+            width: 100%;
+            height: 750px;
+            background: url(./images/banner.jpg) #010102 no-repeat;
+            background-size: auto 100%;
+            background-position: center center;
+        }
+        .banner p{
+            text-align: center;
+            color: #fff;
+            font-size: 45px;
+        }
+        .banner .text{
+            height: 32px;
+            line-height: 32px;
+        }
+        .banner .text1{
+            margin: 26px 0 41px 0;
+            background: url(./images/text1.png) no-repeat;
+            background-position: center center;
+        }
+        .banner .text2{
+            background: url(./images/text2.png) no-repeat;
+            background-position: center center;
+        }
+        .header{
+            display: flex;
+            margin: 0 auto;
+            padding:10px;
+            justify-content: space-between;
+            width: 1180px;
+        }
+        .header ul{
+            display: flex;
+            color: #fff;
+            height: 32px;
+        }
+        .header ul li{ 
+            margin:0 15px;
+        }
+        .header ul li a{
+            display: inline-block;
+            line-height: 32px;
+            color: #fff;
+            text-decoration: none;
+        }
+        .header ul li a:hover{
+            border-bottom: 2px solid #fff;
+        }
+        .service{
+            padding-top: 70px;
+            background: url(./images/bg1.png) no-repeat;
+            background-position: left top;
+        }
+        .service ul{
+            box-sizing: border-box;
+            display: flex;
+            width: 1200px;
+            margin: 0 auto;
+            padding: 0 50px 20px;
+            justify-content: center;
+        }
+        .service ul li{
+            margin: 0 10px;
+        }
+        
+        .service ul li:hover{
+            background: rgba(2,74,220,0.08);
+        }
+        
+        .service h2{
+            width: 110px;
+            margin: 0 auto;
+            margin-bottom: 70px;
+            font-size: 30px;
+            color: #000;
+            position: relative;
+            line-height: 72px;
+        }
+        .service h2 div{
+            position: absolute;
+            background: #000;
+            height: 4px;
+            width: 46px;
+            bottom: 0;
+            left: 32px;
+        }
 
-      <h1><a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a></h1>
-
-      <div class="entry">
-        {{ post.excerpt }}
-      </div>
-
-      <a href="{{ site.baseurl }}{{ post.url }}" class="read-more">Read More</a>
-    </article>
-  {% endfor %}
-</div>
+        .service .icon1{
+            background: url(./images/icon1.png);
+        }
+        .service .icon2{
+            background: url(./images/icon2.png);
+        }
+        .service .icon3{
+            background: url(./images/icon3.png);
+        }
+        .service .icon4{
+            background: url(./images/icon4.png);
+        }
+        .service .icon5{
+            background: url(./images/icon5.png);
+        }
+        .service .icon{
+            display: block;
+            box-sizing: border-box;
+            width: 200px;
+            height: 230px;
+            border: 1px solid #D0D0D0;
+            background-position: center 30%;
+            background-repeat: no-repeat;
+            color: #000;
+            text-decoration: none;
+        }
+        .service .icon:hover{
+            border-color: transparent;
+        }
+        .service .icon > div{
+            width: 0;
+            height: 4px;
+            background: #fff;
+            /* transition: all .2s; */
+        }
+        .service .icon:hover > div{
+            width: 200px;
+            margin-left: -1px;
+            background: #024ADC;
+        }
+        .service .icon p{
+            width: 154px;
+            margin: 120px auto;
+            text-align: center;
+            font-family: PingFang-SC-Regular;
+            font-size: 14px;
+        }
+        .service .more{
+            display: block;
+            margin:100px auto;
+            width: 18px;
+            height: 18px;
+            background: url(./images/more.png) no-repeat;
+        }
+        footer{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 160px;
+            background: #000;
+            text-align: center;
+            color: #fff;
+            flex-direction: column;
+            font-size: 14px;
+            font-family: PingFang-SC-Medium;
+        }
+        footer .logo{
+            margin-right: 20px;
+            font-size: 22px;
+        }
+        .logo{
+            font-family: Helvetica,'微软雅黑';
+            color: #fff;
+            text-decoration: none;
+        }
+        .banner .logo.big{
+            font-size: 90px;
+            margin-top: 220px;
+        }
+        
+        .header .logo{
+            font-size: 24px;
+        }
+        
+        .detail{
+            background: #F2F2F2;
+            background-position: right 30%;
+            padding:120px 0;
+        }
+        .detail .item{
+            width: 1006px;
+            margin: 0 auto;
+        }
+        .item.left{
+            padding-left: 70px;
+        }
+        .detail .item.left img,.detail .item.left .text{
+            float: left;
+        }
+        .detail .item.right img,.detail .item.right .text{
+            float: right;
+            text-align: right;
+        }
+        .detail .item.right{
+            margin: 80px auto;
+            padding-right: 130px;
+        }
+        .detail .item.right .text{
+            margin:0 82px 0 0;
+        }
+        .detail img{
+            width: 400px;
+            height: 300px;
+            box-shadow:24px -19px rgb(216, 222, 238);
+        }
+        .detail .text{
+            width: 500px;
+            margin-left: 106px;
+            font-size: 14px;
+            color: #000;
+        }
+        .detail .text p{
+            margin:15px 0 50px 0;
+        }
+        .detail .text h3{
+            margin-top: 10px;
+            font-size: 18px;
+        }
+        .detail .text a{
+            display: inline-block;
+            height: 56px;
+            width: 180px;
+            line-height: 56px;
+            text-decoration: none;
+            background: #024ADC;
+            color: #fff;
+            font-size: 12px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <section class="banner">
+        <div class="header">
+            <a class="logo" href="">
+                Tronix
+            </a>
+            <ul>
+                <li><a href="">What is Tronix</a></li>
+                <li><a href="#service">Service</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+        <p class="logo big">Tronix</p>
+        <p class="text text1"></p>
+        <p class="text text2"></p>
+    </section>
+    <section class="service" id="service">
+        <h2>Service<div></div></h2>
+        <ul >
+            <li>
+                
+                <a href="page/ad.html" target="_blank" class="icon icon1">
+                    <div></div>
+                    <p>
+                        Provision of space on websites for advertising goods and services
+                    </p>
+                </a>
+            </li>
+            <li>
+                <a href="page/db.html" target="_blank" class="icon icon2">
+                    <div></div>
+                    <p>A computer database</p>
+                </a>
+            </li>
+            <li>
+                <a href="page/mk.html" target="_blank" class="icon icon3">
+                    <div></div>
+                    <p>Provision of an on-line marketplace for buyers and sellers of goods and services</p>
+                </a>
+            </li>
+            <li>
+                <a href="page/fm.html" target="_blank" class="icon icon4">
+                    <div></div>
+                    <p>Financial management</p>
+                </a>
+            </li>
+            <li>
+                <a href="page/ws.html" target="_blank" class="icon icon5">
+                    <div></div>
+                    <p>Providing financial information via a web site</p>
+                </a>
+            </li>
+        </ul>
+        <ul>
+            <li>        
+                <a href="#" class="icon icon3">
+                    <div></div>
+                    <p>Software update</p>
+                </a>
+            </li>
+            <li>        
+                <a href="#" class="icon icon3">
+                    <div></div>
+                    <p>Virtual reality games</p>
+                </a>
+            </li>
+            <li>        
+                <a href="#" class="icon icon3">
+                    <div></div>
+                    <p>Online content transfer</p>
+                </a>
+            </li>
+        </ul>
+        <div class="">
+            <a class="more" href="#detail"></a>
+        </div>
+    </section>
+    <section class="detail" id="detail">
+        <div class="item left clearfix">
+            <img src="./images/pic1.png" alt="">
+            <div class="text">
+                <h3>Distributed Ledger</h3>
+                <p>Distributed ledger has blazed a new trail for digital asset transactions, information storage, and identity
+                    management, etc in payment, settlement and clearance. The technology is a combination of peer-to-peer
+                    network, distributed data storage, cryptology, and other technical elements. It has the potential to change
+                    the way we store, record, and the way we transfer digital assets.</p>
+                <a href="https://tronscan.org/#/">LEARN MORE</a>
+            </div>
+        </div>
+        <div class="item right clearfix">
+            <img src="./images/pic2.png" alt="">
+            <div class="text">
+                <h3>DApp Platform</h3>
+                <p>Tronix is dedicated to building the infrastructure for a truly decentralized Internet. Its underlying
+                    protocol is one of the largest decentralized blockchain-based operating systems in the world, offering
+                    high-scalability, high-availability, and high-throughput support that serves as the foundation for all
+                    decentralized applications in the TRON ecosystem.</p>
+                <a href="https://trondapp.org/">LEARN MORE</a>
+            </div>
+        </div>
+        <div class="item left clearfix">
+            <img src="./images/pic3.png" alt="">
+            <div class="text">
+                <h3>Social Finance</h3>
+                <p>Based on the idea of "audio social", two people who are successfully matched through instant annoymous phone
+                    call can go very deep in their conversation within a short period of time. Female users and quality male
+                    users can have a charge setting in the product. Everyone can benefit from the process and finance is just
+                    well within reach.</p>
+                <a href="https://www.peiwo.cn/">LEARN MORE</a>
+            </div>
+        </div>
+    </section>
+    <footer id="contact">
+        <p>
+            <span class="logo">Tronix</span>
+            <span>Contact:feedback@tronix.com</span>
+        </p>
+        <p style="margin-top: 15px;color:#C9C8C8;font-size:12px;">Copyright © 2018 Tronix.com</p>
+    </footer>
+</body>
+</html>
